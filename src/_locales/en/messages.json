@@ -21,10 +21,16 @@
     "message": "Save"
   },
   "settingsSaved": {
-    "message": "Settings saved!"
+    "message": "Settings saved successfully"
   },
   "invalidProxyUrl": {
-    "message": "Invalid proxy URL!"
+    "message": "Please enter a valid proxy URL"
+  },
+  "invalidQuality": {
+    "message": "Quality must be between 1 and 100"
+  },
+  "httpsRequired": {
+    "message": "Proxy URL must use HTTPS"
   },
   "on": {
     "message": "ON"
