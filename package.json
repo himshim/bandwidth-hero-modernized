@@ -4,7 +4,8 @@
   "description": "Modernized Bandwidth Hero extension for Chrome (Manifest V3)",
   "scripts": {
     "build": "node scripts/build.js",
-    "zip": "cd dist && bestzip ../bandwidth-hero-v$npm_package_version.zip ."
+    "zip": "cd dist && bestzip ../bandwidth-hero-v$npm_package_version.zip .",
+    "release": "node scripts/release.js"
   },
   "devDependencies": {
     "bestzip": "^2.2.0",
