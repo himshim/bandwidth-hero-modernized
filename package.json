@@ -1,6 +1,6 @@
 {
   "name": "bandwidth-hero-modernized",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Modernized Bandwidth Hero extension for Manifest V3",
   "scripts": {
     "build": "node scripts/build.js",
