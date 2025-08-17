@@ -14,8 +14,7 @@ jobs:
         with:
           node-version: '16'
       - run: npm install
-      - run: npm run build
-      - run: npm run zip
+      - run: npm run release
       - name: Upload Release Asset
         uses: actions/upload-artifact@v3
         with:
