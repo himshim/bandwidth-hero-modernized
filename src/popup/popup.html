@@ -2,20 +2,40 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Bandwidth Hero</title>
+  <title>__MSG_extensionName__</title>
   <style>
-    body { width: 200px; text-align: center; }
-    .toggle { margin: 10px; }
-    #status { font-weight: bold; }
+    body { 
+      width: 200px; 
+      text-align: center; 
+      font-family: Arial, sans-serif;
+    }
+    .toggle { 
+      margin: 10px; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    #status { 
+      font-weight: bold; 
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    h3 {
+      margin: 10px 0;
+      color: #333;
+    }
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+    }
   </style>
 </head>
 <body>
-  <h3>Bandwidth Hero</h3>
+  <h3>__MSG_extensionName__</h3>
   <div class="toggle">
-    <label>
-      <input type="checkbox" id="toggle">
-      Enable
-    </label>
+    <input type="checkbox" id="toggle">
+    <label for="toggle">__MSG_enable__</label>
   </div>
   <div id="status">OFF</div>
   <script src="popup.js"></script>
