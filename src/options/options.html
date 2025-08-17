@@ -1,92 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>__MSG_extensionName__ __MSG_options__</title>
   <style>
-    body { 
-      font-family: Arial, sans-serif; 
-      max-width: 500px; 
-      margin: 0 auto; 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      max-width: 500px;
+      margin: 20px auto;
       padding: 20px;
-      background-color: #f5f5f5;
+      background: #f5f5f5;
+      box-sizing: border-box;
     }
     h1 {
       color: #333;
       text-align: center;
-      margin-bottom: 30px;
+      font-size: 20px;
+      margin-bottom: 20px;
     }
-    .form-group { 
-      margin-bottom: 20px; 
+    .form-group {
+      margin-bottom: 20px;
       background: white;
       padding: 15px;
       border-radius: 5px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    label { 
-      display: block; 
+    label {
+      display: block;
       margin-bottom: 8px;
       font-weight: bold;
       color: #555;
     }
-    input[type="text"], input[type="number"] { 
-      width: 100%; 
-      padding: 10px; 
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 10px;
       border: 1px solid #ddd;
       border-radius: 4px;
       font-size: 14px;
+      box-sizing: border-box;
     }
-    input[type="text"]:focus, input[type="number"]:focus {
+    input:focus {
       outline: none;
       border-color: #4CAF50;
     }
-    button { 
-      padding: 12px 20px; 
-      background: #4CAF50; 
-      color: white; 
-      border: none; 
-      cursor: pointer;
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px;
       border-radius: 4px;
-      font-size: 16px;
+      cursor: pointer;
+      font-size: 14px;
       width: 100%;
-      margin-top: 10px;
     }
     button:hover {
       background: #45a049;
     }
-    #status { 
-      margin-top: 15px; 
-      font-weight: bold; 
+    #status {
+      margin-top: 15px;
+      font-weight: bold;
       text-align: center;
       padding: 10px;
       border-radius: 4px;
+      display: none;
     }
-    .error { 
-      color: #D32F2F;
-      background-color: #FFEBEE;
+    #status.show {
+      display: block;
     }
-    .success { 
+    .success {
       color: #388E3C;
-      background-color: #E8F5E9;
+      background: #E8F5E9;
+    }
+    .error {
+      color: #D32F2F;
+      background: #FFEBEE;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+        max-width: 100%;
+      }
+      h1 {
+        font-size: 18px;
+      }
+      input, button {
+        font-size: 12px;
+        padding: 8px;
+      }
     }
   </style>
 </head>
 <body>
   <h1>__MSG_extensionName__ __MSG_options__</h1>
-  
   <div class="form-group">
-    <label for="proxyUrl">__MSG_proxyUrl__:</label>
-    <input type="text" id="proxyUrl" placeholder="https://your-proxy.com">
+    <label for="proxyUrl">__MSG_proxyUrl__</label>
+    <input type="text" id="proxyUrl" placeholder="https://your-proxy.com" aria-required="true">
   </div>
-  
   <div class="form-group">
-    <label for="quality">__MSG_quality__:</label>
-    <input type="number" id="quality" min="1" max="100" value="50">
+    <label for="quality">__MSG_quality__</label>
+    <input type="number" id="quality" min="1" max="100" value="50" aria-required="true">
   </div>
-  
   <button id="save">__MSG_save__</button>
   <div id="status"></div>
-  
   <script src="options.js"></script>
 </body>
 </html>
