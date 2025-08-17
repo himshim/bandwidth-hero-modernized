@@ -11,10 +11,13 @@ async function build() {
   // Copy source files to dist
   await fs.copy('src', 'dist');
 
+  // Copy _locales directory
+  await fs.copy('src/_locales', 'dist/_locales');
+
   // Update version in manifest
   await replace({
     files: 'dist/manifest.json',
-    from: /\"version\": \".*\"/,
+    from: /"version": ".*"/,
     to: `"version": "${version}"`
   });
 
