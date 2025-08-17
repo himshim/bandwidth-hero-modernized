@@ -1,0 +1,29 @@
+{
+  "extensionName": {
+    "message": "Bandwidth Hero"
+  },
+  "extensionDescription": {
+    "message": "Save data by compressing images"
+  },
+  "enable": {
+    "message": "Enable"
+  },
+  "options": {
+    "message": "Options"
+  },
+  "proxyUrl": {
+    "message": "Proxy URL"
+  },
+  "quality": {
+    "message": "Image Quality (1-100)"
+  },
+  "save": {
+    "message": "Save"
+  },
+  "settingsSaved": {
+    "message": "Settings saved!"
+  },
+  "invalidProxyUrl": {
+    "message": "Invalid proxy URL!"
+  }
+}
