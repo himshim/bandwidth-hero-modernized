@@ -1,34 +1,51 @@
-function saveOptions() {
-  const proxyUrl = document.getElementById('proxyUrl').value;
-  const quality = document.getElementById('quality').value;
-  
-  // Validate proxy URL
-  try {
-    new URL(proxyUrl);
-    chrome.storage.sync.set({ proxyUrl, quality: parseInt(quality) }, () => {
-      showStatus(chrome.i18n.getMessage('settingsSaved'));
-    });
-  } catch (e) {
-    showStatus(chrome.i18n.getMessage('invalidProxyUrl'), 'error');
-  }
-}
-
-function showStatus(message, type = 'success') {
-  const status = document.getElementById('status');
-  status.textContent = message;
-  status.className = type;
-  setTimeout(() => {
-    status.textContent = '';
-    status.className = '';
-  }, 3000);
-}
-
-// Load saved settings
 document.addEventListener('DOMContentLoaded', () => {
-  chrome.storage.sync.get(['proxyUrl', 'quality'], (result) => {
-    document.getElementById('proxyUrl').value = result.proxyUrl || '';
-    document.getElementById('quality').value = result.quality || 50;
+  const proxyUrlInput = document.getElementById('proxyUrl');
+  const qualityInput = document.getElementById('quality');
+  const saveBtn = document.getElementById('save');
+  const status = document.getElementById('status');
+
+  // Load saved settings
+  chrome.storage.sync.get(['proxyUrl', 'quality'], ({ proxyUrl = '', quality = 50 }) => {
+    proxyUrlInput.value = proxyUrl;
+    qualityInput.value = quality;
   });
-  
-  document.getElementById('save').addEventListener('click', saveOptions);
+
+  // Save settings
+  saveBtn.addEventListener('click', () => {
+    const proxyUrl = proxyUrlInput.value.trim();
+    const quality = parseInt(qualityInput.value);
+
+    // Validate inputs
+    if (!proxyUrl) {
+      showStatus(chrome.i18n.getMessage('invalidProxyUrl'), 'error');
+      return;
+    }
+    if (isNaN(quality) || quality < 1 || quality > 100) {
+      showStatus(chrome.i18n.getMessage('invalidQuality'), 'error');
+      return;
+    }
+
+    try {
+      const url = new URL(proxyUrl);
+      if (url.protocol !== 'https:') {
+        showStatus(chrome.i18n.getMessage('httpsRequired'), 'error');
+        return;
+      }
+
+      chrome.storage.sync.set({ proxyUrl, quality }, () => {
+        showStatus(chrome.i18n.getMessage('settingsSaved'), 'success');
+      });
+    } catch (e) {
+      showStatus(chrome.i18n.getMessage('invalidProxyUrl'), 'error');
+    }
+  });
+
+  function showStatus(message, type) {
+    status.textContent = message;
+    status.className = `show ${type}`;
+    setTimeout(() => {
+      status.className = '';
+      status.textContent = '';
+    }, 3000);
+  }
 });
