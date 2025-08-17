@@ -6,10 +6,10 @@ function saveOptions() {
   try {
     new URL(proxyUrl);
     chrome.storage.sync.set({ proxyUrl, quality: parseInt(quality) }, () => {
-      showStatus('Settings saved!');
+      showStatus(chrome.i18n.getMessage('settingsSaved'));
     });
   } catch (e) {
-    showStatus('Invalid proxy URL!', 'error');
+    showStatus(chrome.i18n.getMessage('invalidProxyUrl'), 'error');
   }
 }
 
@@ -17,7 +17,10 @@ function showStatus(message, type = 'success') {
   const status = document.getElementById('status');
   status.textContent = message;
   status.className = type;
-  setTimeout(() => status.textContent = '', 3000);
+  setTimeout(() => {
+    status.textContent = '';
+    status.className = '';
+  }, 3000);
 }
 
 // Load saved settings
