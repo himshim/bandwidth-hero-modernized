@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Bandwidth Hero",
-  "version": "0.0.4",
+  "version": "0.0.7",
+  "default_locale": "en",
   "description": "Save data by compressing images",
   "permissions": [
     "declarativeNetRequest",
