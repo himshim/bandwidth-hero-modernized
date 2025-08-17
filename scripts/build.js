@@ -8,19 +8,8 @@ async function build() {
   await fs.remove('dist');
   await fs.ensureDir('dist');
 
-  // Copy source files to dist (excluding _locales)
-  const items = await fs.readdir('src', { withFileTypes: true });
-  for (const item of items) {
-    if (item.name !== '_locales') {
-      const srcPath = path.join('src', item.name);
-      const destPath = path.join('dist', item.name);
-      if (item.isDirectory()) {
-        await fs.copy(srcPath, destPath);
-      } else {
-        await fs.copy(srcPath, destPath);
-      }
-    }
-  }
+  // Copy source files to dist
+  await fs.copy('src', 'dist');
 
   // Update version in manifest
   await replace({
