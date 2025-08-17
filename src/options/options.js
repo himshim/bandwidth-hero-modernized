@@ -6,10 +6,10 @@ function saveOptions() {
   try {
     new URL(proxyUrl);
     chrome.storage.sync.set({ proxyUrl, quality: parseInt(quality) }, () => {
-      showStatus('Settings saved!');
+      showStatus(chrome.i18n.getMessage('settingsSaved'));
     });
   } catch (e) {
-    showStatus('Invalid proxy URL!', 'error');
+    showStatus(chrome.i18n.getMessage('invalidProxyUrl'), 'error');
   }
 }
 
