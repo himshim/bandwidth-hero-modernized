@@ -1,15 +1,13 @@
 {
   "name": "bandwidth-hero-modernized",
-  "version": "0.0.7",
-  "description": "Modernized Bandwidth Hero extension for Manifest V3",
+  "version": "0.0.8",
+  "description": "Modernized Bandwidth Hero extension for Chrome (Manifest V3)",
   "scripts": {
     "build": "node scripts/build.js",
-    "release": "node scripts/release.js",
     "zip": "cd dist && bestzip ../bandwidth-hero-v$npm_package_version.zip ."
   },
   "devDependencies": {
     "bestzip": "^2.2.0",
-    "fs-extra": "^10.0.0",
-    "replace-in-file": "^6.3.0"
+    "fs-extra": "^10.0.0"
   }
 }
