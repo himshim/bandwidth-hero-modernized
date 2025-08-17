@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
   function updateStatus(enabled) {
-    status.textContent = enabled ? 'ON' : 'OFF';
+    status.textContent = enabled ? chrome.i18n.getMessage('on') : chrome.i18n.getMessage('off');
     status.style.color = enabled ? '#4CAF50' : '#F44336';
   }
 });
